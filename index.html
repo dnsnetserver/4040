@@ -3,81 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Insurance Quote Landing</title>
+  <title>Insurance Quotes</title>
   <style>
+    :root {
+      --gradient: linear-gradient(135deg, #56ab2f, #a8e063);
+      --background: #f0f5f2;
+      --card-bg: white;
+      --text-color: #333;
+      --primary: #4CAF50;
+      --shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+      --icon-bg: #e0f3e7;
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e6f5ec, #ccf0ff, #e6f0fa);
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--background);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem;
-      background-color: transparent;
-    }
-
-    .language-selector {
-      font-size: 0.9rem;
-    }
-
-    .main {
-      padding: 1rem;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: 1.5rem;
+      background: var(--gradient);
+      color: white;
+      padding: 2rem 1rem;
       text-align: center;
-      margin-bottom: 1rem;
     }
 
-    .quote-section {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding: 0 1rem;
-    }
-
-    .quote-card {
-      min-width: 130px;
-      background: white;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      cursor: pointer;
-      flex: 0 0 auto;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-
-    .quote-card:hover {
-      transform: scale(1.05);
-    }
-
-    .quote-card.active {
-      border: 2px solid #00b894;
-    }
-
-    .quote-card i {
-      font-size: 2rem;
-      color: #00b894;
+    header h1 {
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
 
+    .container {
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-carousel {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      scroll-snap-type: x mandatory;
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-card {
+      min-width: 120px;
+      flex: 0 0 auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      scroll-snap-align: start;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+
+    .quote-card.active {
+      border-color: var(--primary);
+    }
+
+    .quote-card .icon {
+      background: var(--icon-bg);
+      border-radius: 50%;
+      padding: 10px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .quote-card img {
+      width: 32px;
+      height: 32px;
+    }
+
     form {
-      background: white;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
     }
 
     .form-group {
@@ -86,129 +104,148 @@
 
     .form-group label {
       display: block;
-      margin-bottom: 0.25rem;
       font-weight: bold;
+      margin-bottom: 0.3rem;
     }
 
     .form-group input,
     .form-group select {
       width: 100%;
       padding: 0.5rem;
-      border-radius: 5px;
       border: 1px solid #ccc;
+      border-radius: 8px;
     }
 
     .form-submit {
-      background: #00b894;
+      background: var(--primary);
       color: white;
       border: none;
-      padding: 0.75rem 1rem;
-      border-radius: 5px;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
       cursor: pointer;
       width: 100%;
-      font-size: 1rem;
+      margin-top: 1rem;
     }
 
-    .stores {
+    .app-buttons {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
+      margin-bottom: 1rem;
     }
 
-    .stores img {
-      width: 120px;
-      height: auto;
+    .app-buttons img {
+      height: 40px;
     }
 
-    .agreement {
-      margin-top: 2rem;
-      font-size: 0.9rem;
+    .language-selector {
       text-align: center;
+      margin-bottom: 1rem;
     }
 
-    .agreement input {
+    .language-selector select {
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+    }
+
+    .terms {
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .terms input[type="checkbox"] {
       margin-right: 0.5rem;
     }
 
-    @media screen and (max-width: 480px) {
-      .quote-section {
-        flex-direction: row;
-        overflow-x: auto;
+    @media (min-width: 768px) {
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
       }
 
-      .quote-card {
-        min-width: 120px;
+      .card-carousel {
+        justify-content: flex-start;
+        overflow-x: visible;
       }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <header>
-    <div class="logo"><strong>QuotePro</strong></div>
-    <div class="language-selector">
-      <label for="language">🌐</label>
-      <select id="language">
-        <option>EN</option>
-        <option>ES</option>
-        <option>FR</option>
-      </select>
-    </div>
+    <h1>Compare Insurance Quotes</h1>
+    <p>Select a category to begin your quote</p>
   </header>
 
-  <div class="main">
-    <h1>Compare Insurance Quotes Instantly</h1>
-
-    <div class="quote-section">
+  <main class="container">
+    <!-- Category cards -->
+    <div class="card-carousel">
       <div class="quote-card active" data-form="home">
-        <i class="fas fa-house"></i>
-        <div>Home</div>
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/home.png" alt="Home"/>
+        </div>
+        <p>Home</p>
       </div>
       <div class="quote-card" data-form="auto">
-        <i class="fas fa-car"></i>
-        <div>Auto</div>
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/car.png" alt="Auto"/>
+        </div>
+        <p>Auto</p>
       </div>
       <div class="quote-card" data-form="life">
-        <i class="fas fa-heartbeat"></i>
-        <div>Life</div>
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/like.png" alt="Life"/>
+        </div>
+        <p>Life</p>
       </div>
       <div class="quote-card" data-form="health">
-        <i class="fas fa-stethoscope"></i>
-        <div>Health</div>
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/hospital.png" alt="Health"/>
+        </div>
+        <p>Health</p>
       </div>
     </div>
 
+    <!-- Form display -->
     <div id="form-container"></div>
 
-    <div class="stores">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Download_on_the_App_Store_Badge.svg" alt="App Store">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+    <!-- App Store banners -->
+    <div class="app-buttons">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
     </div>
 
-    <div class="agreement">
-      <input type="checkbox" id="agree" required>
-      <label for="agree">I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a>.</label>
+    <!-- Language selection -->
+    <div class="language-selector">
+      <label for="lang">🌍 Language:</label>
+      <select id="lang">
+        <option>English</option>
+        <option>Español</option>
+        <option>Français</option>
+        <option>中文</option>
+      </select>
     </div>
-  </div>
+
+    <!-- Terms and Conditions -->
+    <div class="terms">
+      <label>
+        <input type="checkbox" required />
+        I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a>
+      </label>
+    </div>
+  </main>
 
   <script>
     const formData = {
       home: `
         <form>
           <div class="form-group">
-            <label>ZIP Code</label>
-            <input type="text" placeholder="12345" required />
+            <label>Year Built</label>
+            <input type="number" placeholder="e.g. 1995" required />
           </div>
           <div class="form-group">
-            <label>Home Type</label>
-            <select required>
-              <option value="">Select</option>
-              <option>Single-family</option>
-              <option>Condo</option>
-              <option>Townhouse</option>
-            </select>
+            <label>ZIP Code</label>
+            <input type="text" placeholder="12345" required />
           </div>
           <div class="form-group">
             <label>Email</label>
@@ -220,12 +257,12 @@
       auto: `
         <form>
           <div class="form-group">
-            <label>Vehicle Make</label>
-            <input type="text" placeholder="Toyota" required />
+            <label>Vehicle Make and Model</label>
+            <input type="text" placeholder="e.g. Toyota Camry" required />
           </div>
           <div class="form-group">
-            <label>Year</label>
-            <input type="number" placeholder="2020" required />
+            <label>ZIP Code</label>
+            <input type="text" placeholder="12345" required />
           </div>
           <div class="form-group">
             <label>Email</label>
@@ -241,13 +278,8 @@
             <input type="number" placeholder="35" required />
           </div>
           <div class="form-group">
-            <label>Coverage</label>
-            <select required>
-              <option value="">Select</option>
-              <option>$100,000</option>
-              <option>$250,000</option>
-              <option>$500,000</option>
-            </select>
+            <label>ZIP Code</label>
+            <input type="text" placeholder="12345" required />
           </div>
           <div class="form-group">
             <label>Email</label>
@@ -259,16 +291,12 @@
       health: `
         <form>
           <div class="form-group">
-            <label>Current Coverage?</label>
-            <select required>
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
+            <label>Occupation</label>
+            <input type="text" placeholder="e.g. Engineer" required />
           </div>
           <div class="form-group">
-            <label>Dependents</label>
-            <input type="number" min="0" required />
+            <label>ZIP Code</label>
+            <input type="text" placeholder="12345" required />
           </div>
           <div class="form-group">
             <label>Email</label>
@@ -295,7 +323,7 @@
       });
     });
 
-    // Show default form on load
+    // Load default form
     showForm('home');
   </script>
 </body>
