@@ -6,7 +6,7 @@
   <title>Insurance Quotes</title>
   <style>
     :root {
-      --gradient: linear-gradient(135deg, #56ab2f, #a8e063); /* green tech */
+      --gradient: linear-gradient(135deg, #56ab2f, #a8e063);
       --background: #f0f5f2;
       --card-bg: white;
       --text-color: #333;
@@ -209,15 +209,6 @@
     <!-- Form display -->
     <div id="form-container"></div>
 
-    <!-- Email input -->
-    <form>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input id="email" type="email" placeholder="you@example.com" required />
-      </div>
-      <button class="form-submit" type="submit">Submit Email</button>
-    </form>
-
     <!-- App Store banners -->
     <div class="app-buttons">
       <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
@@ -249,6 +240,10 @@
       home: `
         <form>
           <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
             <label>ZIP Code</label>
             <input type="text" placeholder="12345" required />
           </div>
@@ -267,6 +262,10 @@
       auto: `
         <form>
           <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
             <label>Vehicle Make</label>
             <input type="text" placeholder="Toyota" required />
           </div>
@@ -279,6 +278,10 @@
       `,
       life: `
         <form>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com" required />
+          </div>
           <div class="form-group">
             <label>Age</label>
             <input type="number" placeholder="35" required />
@@ -298,7 +301,11 @@
       health: `
         <form>
           <div class="form-group">
-            <label>Do you have current coverage?</label>
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>Current Coverage?</label>
             <select required>
               <option value="">Select</option>
               <option>Yes</option>
@@ -306,7 +313,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Number of Dependents</label>
+            <label>Dependents</label>
             <input type="number" min="0" required />
           </div>
           <button type="submit" class="form-submit">Get Health Quote</button>
