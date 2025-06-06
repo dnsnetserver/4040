@@ -57,17 +57,18 @@
       margin-bottom: 1.5rem;
     }
   
-    .quote-card {
+     .quote-card {
       min-width: 120px;
       flex: 0 0 auto;
-      background-color: #ececec;
-      border-radius: 8px;
+      background: var(--card-bg);
+      border-radius: 12px;
       box-shadow: var(--shadow);
       padding: 1rem;
       text-align: center;
       cursor: pointer;
       scroll-snap-align: start;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      transition: border 0.3s;
     }
 
     .quote-card.active {
@@ -87,12 +88,8 @@
     .quote-card img {
       width: 32px;
       height: 32px;
+      filter: brightness(0.8);
     }
-    .quore-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    }
-
     form {
       background: var(--card-bg);
       padding: 1rem;
