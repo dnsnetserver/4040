@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Insurance Estimates</title>
+  <style>
+    /* === Base styles for mobile === */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #6bc8f2, #d9f8c4);
+      color: #1a1a1a;
+    }
+
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar nav {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .navbar nav a,
+    .navbar nav button {
+      color: #fff;
+      text-decoration: none;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .app-banner {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .app-banner h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .app-banner p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .store-buttons img {
+      width: 150px;
+      height: auto;
+    }
+
+    .quote-form {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .quote-form p {
+      margin-bottom: 1rem;
+    }
+
+    #quoteForm input,
+    #quoteForm button {
+      width: 90%;
+      max-width: 300px;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    #quoteForm input {
+      background-color: #fff;
+    }
+
+    #quoteForm button {
+      background-color: #38bdf8;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f1f1f1;
+      font-size: 0.9rem;
+    }
+
+    /* === Responsive adjustments for larger screens === */
+    @media (min-width: 600px) {
+      .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+      }
+
+      .store-buttons {
+        flex-direction: row;
+      }
+
+      .quote-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">404</div>
+    <nav>
+      <a href="#">How it Works</a>
+      <button id="languageToggle" aria-label="Language">🌐</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="app-banner">
+      <h1>Get Instant Quotes Direct to Your Phone</h1>
+      <p>Compare Home, Auto, Life & Health insurance on the go.</p>
+      <div class="store-buttons">
+        <a href="#"><img src="google-play-badge.svg" alt="Get it on Google Play" /></a>
+        <a href="#"><img src="app-store-badge.svg" alt="Download on the App Store" /></a>
+      </div>
+    </section>
+
+    <section class="quote-form">
+      <p>Receive quotes for Home, Auto, Life, and Health Insurance</p>
+      <form id="quoteForm">
+        <input type="email" placeholder="Your email" required />
+        <button type="submit">Get Quote & Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025. Powered by WordPress. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
