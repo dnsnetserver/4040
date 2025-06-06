@@ -3,70 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Insurance Estimates</title>
+  <title>Insurance Quotes - Mobile First</title>
   <style>
-    /* === Base styles for mobile === */
-    body {
+    /* Mobile-first base styles */
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #6bc8f2, #d9f8c4);
       color: #1a1a1a;
+      line-height: 1.5;
     }
 
-    .navbar {
+    header.navbar {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1rem;
+      justify-content: center;
+      padding: 0.75rem 1rem;
       background-color: #333;
-      color: #fff;
+      color: white;
+      text-align: center;
     }
 
     .navbar .logo {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: bold;
+      margin-bottom: 0.5rem;
     }
 
     .navbar nav {
       display: flex;
       gap: 1rem;
-      margin-top: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .navbar nav a,
     .navbar nav button {
-      color: #fff;
+      color: white;
+      font-size: 0.95rem;
       text-decoration: none;
       background: none;
       border: none;
-      font-size: 1rem;
       cursor: pointer;
     }
 
-    .app-banner {
+    .carousel {
+      margin: 1.5rem auto;
+      padding: 0 1rem;
       text-align: center;
-      padding: 2rem 1rem;
+    }
+
+    .carousel h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .carousel-placeholder {
+      width: 100%;
+      height: 120px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .app-banner {
+      padding: 1rem;
+      text-align: center;
     }
 
     .app-banner h1 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-bottom: 0.5rem;
     }
 
     .app-banner p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-bottom: 1rem;
     }
 
     .store-buttons {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.75rem;
       align-items: center;
     }
 
     .store-buttons img {
-      width: 150px;
+      width: 160px;
       height: auto;
     }
 
@@ -77,11 +111,12 @@
 
     .quote-form p {
       margin-bottom: 1rem;
+      font-size: 0.95rem;
     }
 
     #quoteForm input,
     #quoteForm button {
-      width: 90%;
+      width: 100%;
       max-width: 300px;
       padding: 0.75rem;
       margin-bottom: 1rem;
@@ -92,22 +127,25 @@
 
     #quoteForm input {
       background-color: #fff;
+      border: 1px solid #ccc;
     }
 
     #quoteForm button {
       background-color: #38bdf8;
-      color: #fff;
+      color: white;
       font-weight: bold;
+      cursor: pointer;
     }
 
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: #f1f1f1;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      background-color: #f0f0f0;
+      color: #555;
     }
 
-    /* === Responsive adjustments for larger screens === */
+    /* Larger screens */
     @media (min-width: 600px) {
       .navbar {
         flex-direction: row;
@@ -119,16 +157,16 @@
         flex-direction: row;
       }
 
-      .quote-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      .carousel-placeholder {
+        height: 150px;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header / Navbar -->
   <header class="navbar">
     <div class="logo">404</div>
     <nav>
@@ -137,25 +175,34 @@
     </nav>
   </header>
 
-  <main>
-    <section class="app-banner">
-      <h1>Get Instant Quotes Direct to Your Phone</h1>
-      <p>Compare Home, Auto, Life & Health insurance on the go.</p>
-      <div class="store-buttons">
-        <a href="#"><img src="google-play-badge.svg" alt="Get it on Google Play" /></a>
-        <a href="#"><img src="app-store-badge.svg" alt="Download on the App Store" /></a>
-      </div>
-    </section>
+  <!-- Insurance Category Carousel -->
+  <section class="carousel">
+    <h2>Compare Quotes by Category</h2>
+    <div class="carousel-placeholder">
+      [Insurance Category Carousel Placeholder]
+    </div>
+  </section>
 
-    <section class="quote-form">
-      <p>Receive quotes for Home, Auto, Life, and Health Insurance</p>
-      <form id="quoteForm">
-        <input type="email" placeholder="Your email" required />
-        <button type="submit">Get Quote & Subscribe</button>
-      </form>
-    </section>
-  </main>
+  <!-- App Download Banner -->
+  <section class="app-banner">
+    <h1>Get Instant Quotes Direct to Your Phone</h1>
+    <p>Compare Home, Auto, Life & Health insurance on the go.</p>
+    <div class="store-buttons">
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+      <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
+    </div>
+  </section>
 
+  <!-- Quote Form Section -->
+  <section class="quote-form">
+    <p>Receive quotes for Home, Auto, Life, and Health Insurance</p>
+    <form id="quoteForm">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit">Get Quote & Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025. Powered by WordPress. All rights reserved.</p>
   </footer>
