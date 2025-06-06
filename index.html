@@ -329,15 +329,15 @@
     }
 
     function showConfirmation(event) {
-      event.preventDefault();
-      const confirmationHTML = `
-        <div class="confirmation">
-          ✅ Thank you! Your request has been received.
-        </div>
-      `;
-      formContainer.innerHTML = confirmationHTML;
-      return false;
-    }
+  event.preventDefault();
+  const confirmationHTML = `
+    <div class="confirmation">
+      ✅ Thank you! We'll email your quote shortly.
+    </div>
+  `;
+  formContainer.innerHTML = confirmationHTML;
+  return false;
+}
 
     cards.forEach(card => {
       card.addEventListener('click', () => {
