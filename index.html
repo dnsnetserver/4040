@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Insurance Quotes</title>
+  <title>Modern Insurance Quotes</title>
   <style>
     :root {
-      --gradient: linear-gradient(to right, #6bc8f2, #d9f8c4); /* Tech + eco feel */
-      background: linear-gradient(to right, #6bc8f2, #d9f8c4); /* Tech + eco feel */
-      --card-bg: white;
+      --gradient: linear-gradient(135deg, #dcdcdc, #a6a6a6);
+      --card-bg: #ffffff;
+      --form-bg: #f7f7f7;
       --text-color: #333;
-      --primary: #4CAF50;
-      --shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
-      --icon-bg: #e0f3e7;
+      --accent: #555;
+      --border-color: #ddd;
+      --icon-color: #444;
+      --shadow: rgba(0, 0, 0, 0.06) 0px 4px 10px;
     }
 
     * {
@@ -31,15 +32,14 @@
     }
 
     header {
-      background: var(--gradient);
-      color: white;
       padding: 2rem 1rem;
       text-align: center;
+      color: var(--text-color);
     }
 
     header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
     }
 
     .container {
@@ -53,49 +53,47 @@
       gap: 1rem;
       overflow-x: auto;
       padding-bottom: 1rem;
-      scroll-snap-type: x mandatory;
       margin-bottom: 1.5rem;
     }
-  
-     .quote-card {
+
+    .quote-card {
       min-width: 120px;
       flex: 0 0 auto;
-      background: var(--card-bg);
+      background: var(--form-bg);
       border-radius: 12px;
       box-shadow: var(--shadow);
       padding: 1rem;
       text-align: center;
-      cursor: pointer;
       scroll-snap-align: start;
+      cursor: pointer;
       border: 2px solid transparent;
       transition: border 0.3s;
     }
 
     .quote-card.active {
-      border-color: var(--primary);
+      border-color: var(--accent);
     }
 
     .quote-card .icon {
-      background: var(--icon-bg);
-      border-radius: 50%;
-      padding: 10px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+      font-size: 30px;
+      color: var(--icon-color);
       margin-bottom: 0.5rem;
     }
 
-    .quote-card img {
-      width: 32px;
-      height: 32px;
-      filter: brightness(0.8);
+    .quote-card svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--icon-color);
+      stroke-width: 2;
+      fill: none;
     }
+
     form {
       background: var(--card-bg);
-      padding: 1rem;
+      padding: 1.2rem;
       border-radius: 12px;
       box-shadow: var(--shadow);
-      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
     }
 
     .form-group {
@@ -104,70 +102,39 @@
 
     .form-group label {
       display: block;
-      font-weight: bold;
-      margin-bottom: 0.3rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
     }
 
-    .form-group input,
-    .form-group select {
+    .form-group input {
       width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border-color);
       border-radius: 8px;
+      background: #fff;
+      color: var(--text-color);
     }
 
     .form-submit {
-      background: var(--primary);
+      background: var(--accent);
       color: white;
       border: none;
       padding: 0.7rem 1.5rem;
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
+      font-weight: 500;
       margin-top: 1rem;
-      font-weight: bold;
     }
 
     .confirmation {
-      background: var(--card-bg);
-      padding: 1rem;
-      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      background-color: #e6e6e6;
+      color: #222;
+      border-radius: 10px;
+      font-weight: 500;
       box-shadow: var(--shadow);
-      color: var(--primary);
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .app-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .app-buttons img {
-      height: 40px;
-    }
-
-    .language-selector {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .language-selector select {
-      padding: 0.4rem 0.7rem;
-      border-radius: 6px;
-    }
-
-    .terms {
-      text-align: center;
-      margin: 1rem 0;
-      font-size: 0.9rem;
-    }
-
-    .terms input[type="checkbox"] {
-      margin-right: 0.5rem;
     }
 
     @media (min-width: 768px) {
@@ -175,84 +142,53 @@
         max-width: 800px;
         margin: 0 auto;
       }
-
-      .card-carousel {
-        justify-content: flex-start;
-        overflow-x: visible;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Compare Insurance Quotes</h1>
-    <p>Select a category to begin your quote</p>
+    <h1>Get Insurance Quotes</h1>
+    <p>Select your coverage type below</p>
   </header>
 
   <main class="container">
-    <!-- Category cards -->
     <div class="card-carousel">
       <div class="quote-card active" data-form="home">
         <div class="icon">
-            <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/home.png" alt="Home"/>
+          🏡
         </div>
         <p>Home</p>
       </div>
       <div class="quote-card" data-form="auto">
         <div class="icon">
-          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/car.png" alt="Auto"/>
+          🚗
         </div>
         <p>Auto</p>
       </div>
       <div class="quote-card" data-form="life">
         <div class="icon">
-          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/like.png" alt="Life"/>
+          ❤️
         </div>
         <p>Life</p>
       </div>
       <div class="quote-card" data-form="health">
         <div class="icon">
-          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/hospital.png" alt="Health"/>
+          🏥
         </div>
         <p>Health</p>
       </div>
     </div>
 
-    <!-- Form display -->
     <div id="form-container"></div>
-
-    <!-- App Store banners -->
-    <div class="app-buttons">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
-    </div>
-
-    <!-- Language selection -->
-    <div class="language-selector">
-      <label for="lang">🌍 Language:</label>
-      <select id="lang">
-        <option>English</option>
-        <option>Español</option>
-        <option>Français</option>
-        <option>中文</option>
-      </select>
-    </div>
-
-    <!-- Terms and Conditions -->
-    <div class="terms">
-      <label>
-       <p> By using this site, you agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a> </p>
-      </label>
-    </div>
   </main>
 
   <script>
     const formData = {
-      home: 
+      home: `
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Year Built</label>
-            <input type="number" placeholder="e.g. 1995" required />
+            <input type="number" placeholder="1990" required />
           </div>
           <div class="form-group">
             <label>ZIP Code</label>
@@ -264,12 +200,12 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      ,
-      auto: 
+      `,
+      auto: `
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Vehicle Make and Model</label>
-            <input type="text" placeholder="e.g. Toyota Camry" required />
+            <input type="text" placeholder="e.g., Tesla Model 3" required />
           </div>
           <div class="form-group">
             <label>ZIP Code</label>
@@ -281,8 +217,8 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      ,
-      life: 
+      `,
+      life: `
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Age</label>
@@ -298,12 +234,12 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      ,
-      health: 
+      `,
+      health: `
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Occupation</label>
-            <input type="text" placeholder="e.g. Engineer" required />
+            <input type="text" placeholder="e.g., Engineer" required />
           </div>
           <div class="form-group">
             <label>ZIP Code</label>
@@ -315,37 +251,32 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      
+      `
     };
 
-    const cards = document.querySelectorAll('.quote-card');
-    const formContainer = document.getElementById('form-container');
+    const formContainer = document.getElementById("form-container");
+    const cards = document.querySelectorAll(".quote-card");
 
-    function showForm(type) {
-      formContainer.innerHTML = formData[type];
-      cards.forEach(card => card.classList.remove('active'));
-      document.querySelector(.quote-card[data-form="${type}"]).classList.add('active');
-    }
+    formContainer.innerHTML = formData["home"];
 
-    function showConfirmation(event) {
-      event.preventDefault();
-      formContainer.innerHTML = 
-        <div class="confirmation">
-          ✅ Thank you! We'll email your quote shortly.
-        </div>
-      ;
-      return false;
-    }
-
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const type = card.getAttribute('data-form');
-        showForm(type);
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        cards.forEach((c) => c.classList.remove("active"));
+        card.classList.add("active");
+        const selected = card.getAttribute("data-form");
+        formContainer.innerHTML = formData[selected];
       });
     });
 
-    // Load default form
-    showForm('home');
+    function showConfirmation(event) {
+      event.preventDefault();
+      formContainer.innerHTML = `
+        <div class="confirmation">
+          ✅ Thank you! We'll email your quote shortly.
+        </div>
+      `;
+      return false;
+    }
   </script>
 </body>
 </html>
