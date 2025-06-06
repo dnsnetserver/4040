@@ -6,16 +6,14 @@
   <title>Free Insurance Quotes</title>
   <style>
     :root {
-  --gradient: linear-gradient(to right, #dfe6e9, #b2bec3); /* Neutral rich gradient */
-  --card-bg: #ffffff;
-  --text-color: #2d3436;
-  --primary: #00bcd4;
-  --shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
-  --icon-bg: #ecf0f1;
-  --light-blue: #add8e6;
-  --sky-blue: #87ceeb;
-}
-
+      --gradient: linear-gradient(to right, #6bc8f2, #d9f8c4); /* Tech + eco feel */
+      background: linear-gradient(to right, #6bc8f2, #d9f8c4); /* Tech + eco feel */
+      --card-bg: white;
+      --text-color: #333;
+      --primary: #4CAF50;
+      --shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+      --icon-bg: #e0f3e7;
+    }
 
     * {
       box-sizing: border-box;
@@ -59,29 +57,39 @@
       margin-bottom: 1.5rem;
     }
   
-   .quote-card {
-  border: 2px solid var(--light-blue);
-  transition: background 0.3s, transform 0.2s;
-}
+     .quote-card {
+      min-width: 120px;
+      flex: 0 0 auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      scroll-snap-align: start;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
 
-.quote-card:hover {
-  background: var(--light-blue);
-}
+    .quote-card.active {
+      border-color: var(--primary);
+    }
 
-.quote-card .icon {
-  background: transparent;
-}
+    .quote-card .icon {
+      background: var(--icon-bg);
+      border-radius: 50%;
+      padding: 10px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
 
-.quote-card img {
-  width: 32px;
-  height: 32px;
-  filter: none;
-}
-
-.form-submit {
-  background: var(--sky-blue);
-  color: white;
-}
+    .quote-card img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0.8);
+    }
     form {
       background: var(--card-bg);
       padding: 1rem;
@@ -184,34 +192,31 @@
   <main class="container">
     <!-- Category cards -->
     <div class="card-carousel">
-  <div class="quote-card active" data-form="home">
-    <div class="icon">
-      <img src="https://img.icons8.com/fluency/48/0000ff/home.png" alt="Home" />
+      <div class="quote-card active" data-form="home">
+        <div class="icon">
+            <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/home.png" alt="Home"/>
+        </div>
+        <p>Home</p>
+      </div>
+      <div class="quote-card" data-form="auto">
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/car.png" alt="Auto"/>
+        </div>
+        <p>Auto</p>
+      </div>
+      <div class="quote-card" data-form="life">
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/like.png" alt="Life"/>
+        </div>
+        <p>Life</p>
+      </div>
+      <div class="quote-card" data-form="health">
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/hospital.png" alt="Health"/>
+        </div>
+        <p>Health</p>
+      </div>
     </div>
-    <p>Home</p>
-  </div>
-
-  <div class="quote-card" data-form="auto">
-    <div class="icon">
-      <img src="https://img.icons8.com/fluency/48/ffd700/car.png" alt="Auto" />
-    </div>
-    <p>Auto</p>
-  </div>
-
-  <div class="quote-card" data-form="life">
-    <div class="icon">
-      <img src="https://img.icons8.com/fluency/48/ff0000/like.png" alt="Life" />
-    </div>
-    <p>Life</p>
-  </div>
-
-  <div class="quote-card" data-form="health">
-    <div class="icon">
-      <img src="https://img.icons8.com/fluency/48/40e0d0/medical-cross.png" alt="Health" />
-    </div>
-    <p>Health</p>
-  </div>
-</div>
 
     <!-- Form display -->
     <div id="form-container"></div>
@@ -243,7 +248,7 @@
 
   <script>
     const formData = {
-      home: `
+      home: 
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Year Built</label>
@@ -259,8 +264,8 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      `,
-      auto: `
+      ,
+      auto: 
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Vehicle Make and Model</label>
@@ -276,8 +281,8 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      `,
-      life: `
+      ,
+      life: 
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Age</label>
@@ -293,8 +298,8 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      `,
-      health: `
+      ,
+      health: 
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Occupation</label>
@@ -310,7 +315,7 @@
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
-      `
+      
     };
 
     const cards = document.querySelectorAll('.quote-card');
@@ -319,16 +324,16 @@
     function showForm(type) {
       formContainer.innerHTML = formData[type];
       cards.forEach(card => card.classList.remove('active'));
-      document.querySelector(`.quote-card[data-form="${type}"]`).classList.add('active');
+      document.querySelector(.quote-card[data-form="${type}"]).classList.add('active');
     }
 
     function showConfirmation(event) {
       event.preventDefault();
-      formContainer.innerHTML = `
+      formContainer.innerHTML = 
         <div class="confirmation">
           ✅ Thank you! We'll email your quote shortly.
         </div>
-      `;
+      ;
       return false;
     }
 
