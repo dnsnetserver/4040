@@ -125,6 +125,18 @@
       cursor: pointer;
       width: 100%;
       margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .confirmation {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
     }
 
     .app-buttons {
@@ -238,7 +250,7 @@
   <script>
     const formData = {
       home: `
-        <form>
+        <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Year Built</label>
             <input type="number" placeholder="e.g. 1995" required />
@@ -251,11 +263,11 @@
             <label>Email</label>
             <input type="email" placeholder="you@example.com" required />
           </div>
-          <button type="submit" class="form-submit">Get Home Quote</button>
+          <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
       `,
       auto: `
-        <form>
+        <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Vehicle Make and Model</label>
             <input type="text" placeholder="e.g. Toyota Camry" required />
@@ -268,11 +280,11 @@
             <label>Email</label>
             <input type="email" placeholder="you@example.com" required />
           </div>
-          <button type="submit" class="form-submit">Get Auto Quote</button>
+          <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
       `,
       life: `
-        <form>
+        <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Age</label>
             <input type="number" placeholder="35" required />
@@ -285,11 +297,11 @@
             <label>Email</label>
             <input type="email" placeholder="you@example.com" required />
           </div>
-          <button type="submit" class="form-submit">Get Life Quote</button>
+          <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
       `,
       health: `
-        <form>
+        <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Occupation</label>
             <input type="text" placeholder="e.g. Engineer" required />
@@ -302,7 +314,7 @@
             <label>Email</label>
             <input type="email" placeholder="you@example.com" required />
           </div>
-          <button type="submit" class="form-submit">Get Health Quote</button>
+          <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
       `
     };
@@ -314,6 +326,17 @@
       formContainer.innerHTML = formData[type];
       cards.forEach(card => card.classList.remove('active'));
       document.querySelector(`.quote-card[data-form="${type}"]`).classList.add('active');
+    }
+
+    function showConfirmation(event) {
+      event.preventDefault();
+      const confirmationHTML = `
+        <div class="confirmation">
+          ✅ Thank you! Your request has been received.
+        </div>
+      `;
+      formContainer.innerHTML = confirmationHTML;
+      return false;
     }
 
     cards.forEach(card => {
