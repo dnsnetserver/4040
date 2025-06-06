@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Insurance Quotes - Mobile First</title>
+  <title>Insurance Quotes</title>
   <style>
     :root {
-      --gradient: linear-gradient(135deg, #2a2a72, #009ffd);
-      --background: #f7f9fc;
+      --gradient: linear-gradient(135deg, #56ab2f, #a8e063); /* green tech */
+      --background: #f0f5f2;
       --card-bg: white;
       --text-color: #333;
-      --primary: #009ffd;
+      --primary: #4CAF50;
       --shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+      --icon-bg: #e0f3e7;
     }
 
     * {
@@ -32,7 +33,7 @@
     header {
       background: var(--gradient);
       color: white;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
       text-align: center;
     }
 
@@ -42,34 +43,9 @@
     }
 
     .container {
+      padding: 1.5rem 1rem;
       display: flex;
-      flex-direction: column-reverse;
-      padding: 1rem;
-    }
-
-    .right-panel {
-      text-align: center;
-    }
-
-    .mobile-mockup {
-      width: 80%;
-      max-width: 300px;
-      margin: 0 auto 1rem;
-    }
-
-    .app-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-
-    .app-buttons img {
-      height: 40px;
-    }
-
-    .left-panel {
-      margin-bottom: 2rem;
+      flex-direction: column;
     }
 
     .card-carousel {
@@ -78,6 +54,7 @@
       overflow-x: auto;
       padding-bottom: 1rem;
       scroll-snap-type: x mandatory;
+      margin-bottom: 1.5rem;
     }
 
     .quote-card {
@@ -94,13 +71,23 @@
       transition: border 0.3s;
     }
 
-    .quote-card img {
-      height: 40px;
+    .quote-card.active {
+      border-color: var(--primary);
+    }
+
+    .quote-card .icon {
+      background: var(--icon-bg);
+      border-radius: 50%;
+      padding: 10px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 0.5rem;
     }
 
-    .quote-card.active {
-      border-color: var(--primary);
+    .quote-card img {
+      width: 32px;
+      height: 32px;
     }
 
     form {
@@ -108,6 +95,7 @@
       padding: 1rem;
       border-radius: 12px;
       box-shadow: var(--shadow);
+      margin-bottom: 2rem;
     }
 
     .form-group {
@@ -136,29 +124,44 @@
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
+      margin-top: 1rem;
+    }
+
+    .app-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .app-buttons img {
+      height: 40px;
     }
 
     .language-selector {
-      margin-top: 1rem;
       text-align: center;
+      margin-bottom: 1rem;
     }
 
     .language-selector select {
-      padding: 0.3rem 0.6rem;
+      padding: 0.4rem 0.7rem;
       border-radius: 6px;
+    }
+
+    .terms {
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .terms input[type="checkbox"] {
+      margin-right: 0.5rem;
     }
 
     @media (min-width: 768px) {
       .container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 2rem;
-      }
-
-      .left-panel,
-      .right-panel {
-        flex: 1;
+        max-width: 800px;
+        margin: 0 auto;
       }
 
       .card-carousel {
@@ -171,52 +174,73 @@
 <body>
   <header>
     <h1>Compare Insurance Quotes</h1>
-    <p>Select a category to get started</p>
+    <p>Select a category to begin your quote</p>
   </header>
 
   <main class="container">
-    <!-- Right panel (mockup and downloads) -->
-    <div class="right-panel">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Mobile_Phone_Vector.svg" alt="Mobile App" class="mobile-mockup" />
-      <div class="app-buttons">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
+    <!-- Category cards -->
+    <div class="card-carousel">
+      <div class="quote-card active" data-form="home">
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/home.png" alt="Home"/>
+        </div>
+        <p>Home</p>
       </div>
-      <div class="language-selector">
-        <label for="lang">🌍 Language:</label>
-        <select id="lang">
-          <option>English</option>
-          <option>Español</option>
-          <option>Français</option>
-          <option>中文</option>
-        </select>
+      <div class="quote-card" data-form="auto">
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/car.png" alt="Auto"/>
+        </div>
+        <p>Auto</p>
+      </div>
+      <div class="quote-card" data-form="life">
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/like.png" alt="Life"/>
+        </div>
+        <p>Life</p>
+      </div>
+      <div class="quote-card" data-form="health">
+        <div class="icon">
+          <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/hospital.png" alt="Health"/>
+        </div>
+        <p>Health</p>
       </div>
     </div>
 
-    <!-- Left panel (cards and forms) -->
-    <div class="left-panel">
-      <div class="card-carousel">
-        <div class="quote-card active" data-form="home">
-          <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home" />
-          <p>Home</p>
-        </div>
-        <div class="quote-card" data-form="auto">
-          <img src="https://img.icons8.com/ios-filled/50/000000/car.png" alt="Auto" />
-          <p>Auto</p>
-        </div>
-        <div class="quote-card" data-form="life">
-          <img src="https://img.icons8.com/ios-filled/50/000000/heart-health.png" alt="Life" />
-          <p>Life</p>
-        </div>
-        <div class="quote-card" data-form="health">
-          <img src="https://img.icons8.com/ios-filled/50/000000/hospital-room.png" alt="Health" />
-          <p>Health</p>
-        </div>
-      </div>
+    <!-- Form display -->
+    <div id="form-container"></div>
 
-      <div id="form-container">
-        <!-- Forms dynamically injected -->
+    <!-- Email input -->
+    <form>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input id="email" type="email" placeholder="you@example.com" required />
       </div>
+      <button class="form-submit" type="submit">Submit Email</button>
+    </form>
+
+    <!-- App Store banners -->
+    <div class="app-buttons">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
+    </div>
+
+    <!-- Language selection -->
+    <div class="language-selector">
+      <label for="lang">🌍 Language:</label>
+      <select id="lang">
+        <option>English</option>
+        <option>Español</option>
+        <option>Français</option>
+        <option>中文</option>
+      </select>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="terms">
+      <label>
+        <input type="checkbox" required />
+        I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a>
+      </label>
     </div>
   </main>
 
@@ -230,7 +254,8 @@
           </div>
           <div class="form-group">
             <label>Home Type</label>
-            <select>
+            <select required>
+              <option value="">Select</option>
               <option>Single-family</option>
               <option>Condo</option>
               <option>Townhouse</option>
@@ -260,7 +285,8 @@
           </div>
           <div class="form-group">
             <label>Coverage</label>
-            <select>
+            <select required>
+              <option value="">Select</option>
               <option>$100,000</option>
               <option>$250,000</option>
               <option>$500,000</option>
@@ -273,14 +299,15 @@
         <form>
           <div class="form-group">
             <label>Do you have current coverage?</label>
-            <select>
+            <select required>
+              <option value="">Select</option>
               <option>Yes</option>
               <option>No</option>
             </select>
           </div>
           <div class="form-group">
             <label>Number of Dependents</label>
-            <input type="number" min="0" />
+            <input type="number" min="0" required />
           </div>
           <button type="submit" class="form-submit">Get Health Quote</button>
         </form>
@@ -303,7 +330,7 @@
       });
     });
 
-    // Show default
+    // Show default form on load
     showForm('home');
   </script>
 </body>
