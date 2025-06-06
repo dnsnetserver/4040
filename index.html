@@ -297,23 +297,28 @@
             <label>ZIP Code</label>
             <input type="text" placeholder="12345" required />
           </div>
-          <div class="form-group">
+            <div class="form-group">
             <label>Email</label>
             <input type="email" placeholder="you@example.com" required />
           </div>
-           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
+          <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
       `
     };
 
-       const cards = document.querySelectorAll('.quote-card');
-    const formContainer = document.getElementById('form-container');
+    const formContainer = document.getElementById("form-container");
+    const cards = document.querySelectorAll(".quote-card");
 
-    function showForm(type) {
-      formContainer.innerHTML = formData[type];
-      cards.forEach(card => card.classList.remove('active'));
-      document.querySelector(`.quote-card[data-form="${type}"]`).classList.add('active');
-    }
+    formContainer.innerHTML = formData["home"];
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        cards.forEach((c) => c.classList.remove("active"));
+        card.classList.add("active");
+        const selected = card.getAttribute("data-form");
+        formContainer.innerHTML = formData[selected];
+      });
+    });
 
     function showConfirmation(event) {
       event.preventDefault();
@@ -324,16 +329,6 @@
       `;
       return false;
     }
-
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const type = card.getAttribute('data-form');
-        showForm(type);
-      });
-    });
-
-    // Load default form
-    showForm('home');
   </script>
 </body>
 </html>
