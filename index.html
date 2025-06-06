@@ -301,18 +301,28 @@
             <label>Email</label>
             <input type="email" placeholder="you@example.com" required />
           </div>
-          <button type="submit" class="form-submit">Get Health Quote</button>
+           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
       `
     };
 
-    const cards = document.querySelectorAll('.quote-card');
+       const cards = document.querySelectorAll('.quote-card');
     const formContainer = document.getElementById('form-container');
 
     function showForm(type) {
       formContainer.innerHTML = formData[type];
       cards.forEach(card => card.classList.remove('active'));
       document.querySelector(`.quote-card[data-form="${type}"]`).classList.add('active');
+    }
+
+    function showConfirmation(event) {
+      event.preventDefault();
+      formContainer.innerHTML = `
+        <div class="confirmation">
+          ✅ Thank you! We'll email your quote shortly.
+        </div>
+      `;
+      return false;
     }
 
     cards.forEach(card => {
