@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Insurance Quotes</title>
+  <title>Modern Insurance Quotes</title>
   <style>
     :root {
-      --gradient: linear-gradient(135deg, #c0f0ff, #d4f8c4);
-      --background: #f3fbf7;
-      --card-bg: white;
-      --text-color: #222;
-      --primary: #4CAF50;
-      --shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
-      --icon-bg: #e7fbee;
+      --gradient: linear-gradient(135deg, #dcdcdc, #a6a6a6);
+      --card-bg: #ffffff;
+      --form-bg: #f7f7f7;
+      --text-color: #333;
+      --accent: #555;
+      --border-color: #ddd;
+      --icon-color: #444;
+      --shadow: rgba(0, 0, 0, 0.06) 0px 4px 10px;
     }
 
     * {
@@ -23,7 +24,7 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: var(--background);
+      background: var(--gradient);
       color: var(--text-color);
       display: flex;
       flex-direction: column;
@@ -31,15 +32,14 @@
     }
 
     header {
-      background: var(--gradient);
-      color: #1b3b3b;
       padding: 2rem 1rem;
       text-align: center;
+      color: var(--text-color);
     }
 
     header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
     }
 
     .container {
@@ -53,50 +53,47 @@
       gap: 1rem;
       overflow-x: auto;
       padding-bottom: 1rem;
-      scroll-snap-type: x mandatory;
       margin-bottom: 1.5rem;
     }
 
     .quote-card {
       min-width: 120px;
       flex: 0 0 auto;
-      background: var(--card-bg);
+      background: var(--form-bg);
       border-radius: 12px;
       box-shadow: var(--shadow);
       padding: 1rem;
       text-align: center;
-      cursor: pointer;
       scroll-snap-align: start;
+      cursor: pointer;
       border: 2px solid transparent;
       transition: border 0.3s;
     }
 
     .quote-card.active {
-      border-color: var(--primary);
+      border-color: var(--accent);
     }
 
     .quote-card .icon {
-      background: var(--icon-bg);
-      border-radius: 50%;
-      padding: 10px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+      font-size: 30px;
+      color: var(--icon-color);
       margin-bottom: 0.5rem;
     }
 
-    .quote-card img {
-      width: 32px;
-      height: 32px;
-      filter: brightness(0.8);
+    .quote-card svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--icon-color);
+      stroke-width: 2;
+      fill: none;
     }
 
     form {
       background: var(--card-bg);
-      padding: 1rem;
+      padding: 1.2rem;
       border-radius: 12px;
       box-shadow: var(--shadow);
-      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
     }
 
     .form-group {
@@ -105,36 +102,39 @@
 
     .form-group label {
       display: block;
-      font-weight: bold;
-      margin-bottom: 0.3rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
     }
 
-    .form-group input,
-    .form-group select {
+    .form-group input {
       width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border-color);
       border-radius: 8px;
+      background: #fff;
+      color: var(--text-color);
     }
 
     .form-submit {
-      background: var(--primary);
+      background: var(--accent);
       color: white;
       border: none;
       padding: 0.7rem 1.5rem;
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
+      font-weight: 500;
       margin-top: 1rem;
     }
 
     .confirmation {
       padding: 1.5rem;
       text-align: center;
-      background-color: #e6fce6;
-      color: #225522;
+      background-color: #e6e6e6;
+      color: #222;
       border-radius: 10px;
       font-weight: 500;
+      box-shadow: var(--shadow);
     }
 
     @media (min-width: 768px) {
@@ -142,50 +142,43 @@
         max-width: 800px;
         margin: 0 auto;
       }
-
-      .card-carousel {
-        justify-content: flex-start;
-        overflow-x: visible;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Compare Insurance Quotes</h1>
-    <p>Select a category to begin your quote</p>
+    <h1>Get Insurance Quotes</h1>
+    <p>Select your coverage type below</p>
   </header>
 
   <main class="container">
-    <!-- Category cards -->
     <div class="card-carousel">
       <div class="quote-card active" data-form="home">
         <div class="icon">
-          <img src="https://img.icons8.com/ios-filled/50/tree-house.png" alt="Eco Home"/>
+          🏡
         </div>
         <p>Home</p>
       </div>
       <div class="quote-card" data-form="auto">
         <div class="icon">
-          <img src="https://img.icons8.com/ios-filled/50/electric-car.png" alt="Electric Car"/>
+          🚗
         </div>
         <p>Auto</p>
       </div>
       <div class="quote-card" data-form="life">
         <div class="icon">
-          <img src="https://img.icons8.com/ios-filled/50/heart-with-pulse.png" alt="Life"/>
+          ❤️
         </div>
         <p>Life</p>
       </div>
       <div class="quote-card" data-form="health">
         <div class="icon">
-          <img src="https://img.icons8.com/ios-filled/50/clinic.png" alt="Health"/>
+          🏥
         </div>
         <p>Health</p>
       </div>
     </div>
 
-    <!-- Dynamic Form -->
     <div id="form-container"></div>
   </main>
 
@@ -246,7 +239,7 @@
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Occupation</label>
-            <input type="text" placeholder="e.g., Teacher" required />
+            <input type="text" placeholder="e.g., Engineer" required />
           </div>
           <div class="form-group">
             <label>ZIP Code</label>
@@ -264,7 +257,6 @@
     const formContainer = document.getElementById("form-container");
     const cards = document.querySelectorAll(".quote-card");
 
-    // Show default form
     formContainer.innerHTML = formData["home"];
 
     cards.forEach((card) => {
