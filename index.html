@@ -199,8 +199,8 @@
 </head>
 <body>
   <header>
-    <h1>Compare Insurance Quotes</h1>
-    <p>Select a category to begin your quote</p>
+    <h1 data-i18n="title">Compare Insurance Quotes</h1>
+    <p data-i18n="subtitle">Select a category to begin your quote</p>
   </header>
 
   <main class="container">
@@ -209,25 +209,25 @@
         <div class="icon">
           <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/home.png" alt="Home"/>
         </div>
-        <p>Home</p>
+        <p data-i18n="home">Home</p>
       </div>
       <div class="quote-card" data-form="auto">
         <div class="icon">
           <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/car.png" alt="Auto"/>
         </div>
-        <p>Auto</p>
+        <p data-i18n="auto">Auto</p>
       </div>
       <div class="quote-card" data-form="life">
         <div class="icon">
           <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/like.png" alt="Life"/>
         </div>
-        <p>Life</p>
+    <p data-i18n="life">Life</p>
       </div>
       <div class="quote-card" data-form="health">
         <div class="icon">
           <img src="https://img.icons8.com/fluency-systems-filled/48/4caf50/hospital.png" alt="Health"/>
         </div>
-        <p>Health</p>
+        <p data-i18n="health">Health</p>
       </div>
     </div>
 
@@ -239,7 +239,7 @@
     </div>
 
     <div class="language-selector">
-      <label for="lang">🌍 Language:</label>
+     <label for="lang" data-i18n="language_label">🌍 Language:</label>
       <select id="lang">
         <option>English</option>
         <option>Español</option>
@@ -248,11 +248,9 @@
       </select>
     </div>
 
-    <div class="terms">
-      <label>
-        By using this site, you agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms</a>
-      </label>
-    </div>
+  <div class="terms" data-i18n="terms">
+  By using this site, you agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms</a>
+</div>
   </main>
 
   <script>
@@ -261,15 +259,15 @@
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
             <label>Year Built</label>
-            <input type="number" placeholder="1990" required />
+           <input type="number" data-i18n-placeholder="placeholder_year" placeholder="1990" />
           </div>
           <div class="form-group">
-            <label>ZIP Code</label>
-            <input type="text" placeholder="12345" required />
+            <label data-i18n="label_zip">ZIP Code</label>
+            <input type="text" data-i18n-placeholder="placeholder_zip" placeholder="12345" />
           </div>
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="you@example.com" required />
+           <label data-i18n="label_email">Email</label>
+           <input type="email" data-i18n-placeholder="placeholder_email" placeholder="you@example.com" />
           </div>
           <button type="submit" class="form-submit">Get Quote & Subscribe</button>
         </form>
@@ -311,8 +309,8 @@
       health: `
         <form onsubmit="return showConfirmation(event)">
           <div class="form-group">
-            <label>Occupation</label>
-            <input type="text" placeholder="e.g., Engineer" required />
+            <label data-i18n="label_occupation">Occupation</label>
+            <input type="text" data-i18n-placeholder="placeholder_occupation" placeholder="e.g., Engineer" />
           </div>
           <div class="form-group">
             <label>ZIP Code</label>
@@ -322,7 +320,7 @@
             <label>Email</label>
             <input type="email" placeholder="you@example.com" required />
           </div>
-          <button type="submit" class="form-submit">Get Quote & Subscribe</button>
+          <button class="form-submit" data-i18n="submit">Get Quote & Subscribe</button>
         </form>
       `
     };
@@ -351,6 +349,119 @@
       `;
       return false;
     }
+    const translations = {
+  en: {
+    title: "Compare Insurance Quotes",
+    subtitle: "Select a category to begin your quote",
+    home: "Home",
+    auto: "Auto",
+    life: "Life",
+    health: "Health",
+    label_year: "Year Built",
+    placeholder_year: "1990",
+    label_zip: "ZIP Code",
+    placeholder_zip: "12345",
+    label_email: "Email",
+    placeholder_email: "you@example.com",
+    label_occupation: "Occupation",
+    placeholder_occupation: "e.g., Engineer",
+    submit: "Get Quote & Subscribe",
+    language_label: "🌍 Language:",
+    terms: 'By using this site, you agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms</a>',
+    confirmation: "Thank you! We'll email your quote shortly."
+  },
+  es: {
+    title: "Compara Cotizaciones de Seguros",
+    subtitle: "Selecciona una categoría para comenzar tu cotización",
+    home: "Hogar",
+    auto: "Auto",
+    life: "Vida",
+    health: "Salud",
+    label_year: "Año de Construcción",
+    placeholder_year: "1990",
+    label_zip: "Código Postal",
+    placeholder_zip: "12345",
+    label_email: "Correo Electrónico",
+    placeholder_email: "tú@ejemplo.com",
+    label_occupation: "Ocupación",
+    placeholder_occupation: "p.ej., Ingeniero",
+    submit: "Obtener Cotización y Suscribirse",
+    language_label: "🌍 Idioma:",
+    terms: 'Al usar este sitio, aceptas la <a href="#">Política de Privacidad</a> y los <a href="#">Términos</a>',
+    confirmation: "¡Gracias! Te enviaremos tu cotización por correo electrónico pronto."
+  },
+  fr: {
+    title: "Comparer les Devis d'Assurance",
+    subtitle: "Sélectionnez une catégorie pour commencer votre devis",
+    home: "Maison",
+    auto: "Auto",
+    life: "Vie",
+    health: "Santé",
+    label_year: "Année de Construction",
+    placeholder_year: "1990",
+    label_zip: "Code Postal",
+    placeholder_zip: "12345",
+    label_email: "E-mail",
+    placeholder_email: "vous@exemple.com",
+    label_occupation: "Profession",
+    placeholder_occupation: "ex. Ingénieur",
+    submit: "Obtenir un Devis et S'abonner",
+    language_label: "🌍 Langue :",
+    terms: 'En utilisant ce site, vous acceptez la <a href="#">Politique de Confidentialité</a> et les <a href="#">Conditions</a>',
+    confirmation: "Merci ! Nous vous enverrons votre devis par e-mail bientôt."
+  },
+  zh: {
+    title: "比较保险报价",
+    subtitle: "选择一个类别开始获取报价",
+    home: "住房",
+    auto: "汽车",
+    life: "人寿",
+    health: "健康",
+    label_year: "建造年份",
+    placeholder_year: "1990",
+    label_zip: "邮政编码",
+    placeholder_zip: "12345",
+    label_email: "电子邮件",
+    placeholder_email: "你@example.com",
+    label_occupation: "职业",
+    placeholder_occupation: "例如：工程师",
+    submit: "获取报价并订阅",
+    language_label: "🌍 语言：",
+    terms: '使用本网站即表示您同意 <a href="#">隐私政策</a> 和 <a href="#">条款</a>',
+    confirmation: "谢谢！我们会尽快将报价发送到您的邮箱。"
+  }
+};
+    document.getElementById("lang").addEventListener("change", function () {
+  const lang = this.value.toLowerCase().substring(0, 2);
+  applyTranslations(lang);
+});
+
+function applyTranslations(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (translations[lang] && translations[lang][key]) {
+      el.placeholder = translations[lang][key];
+    }
+  });
+}
+    function showConfirmation(event) {
+  event.preventDefault();
+  const lang = document.getElementById("lang").value.toLowerCase().substring(0, 2);
+  formContainer.innerHTML = `
+    <div class="confirmation-card">
+      <div class="check-icon">✔️</div>
+      <div>${translations[lang]["confirmation"]}</div>
+    </div>
+  `;
+  return false;
+}
   </script>
 </body>
 </html>
