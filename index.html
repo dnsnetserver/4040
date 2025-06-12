@@ -254,6 +254,46 @@
   </main>
 
   <script>
+    function showConfirmation(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const emailInput = form.querySelector('input[type="email"]');
+  const email = emailInput.value.trim();
+  const lang = document.getElementById("lang").value.toLowerCase().substring(0, 2);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Clear any previous error
+  if (emailInput.nextElementSibling?.classList.contains("error-message")) {
+    emailInput.nextElementSibling.remove();
+  }
+
+  if (!emailRegex.test(email)) {
+    const error = document.createElement("div");
+    error.className = "error-message";
+    error.style.color = "red";
+    error.style.marginTop = "0.3rem";
+    error.innerText = {
+      en: "Please enter a valid email address.",
+      es: "Por favor ingrese un correo electrónico válido.",
+      fr: "Veuillez saisir une adresse e-mail valide.",
+      zh: "请输入有效的电子邮件地址。",
+      pt: "Por favor, insira um endereço de e-mail válido."
+    }[lang] || "Please enter a valid email address.";
+    emailInput.after(error);
+    return false;
+  }
+
+  // Clear the form and show confirmation if valid
+  formContainer.innerHTML = `
+    <div class="confirmation-card">
+      <div class="check-icon">✔️</div>
+      <div>${translations[lang]["confirmation"]}</div>
+    </div>
+  `;
+  return false;
+}
     const formData = {
       home: `
         <form onsubmit="return showConfirmation(event)">
