@@ -244,7 +244,7 @@
         <option>English</option>
         <option>Español</option>
         <option>Français</option>
-        <option>中文</option>
+        <option value="pt">Português</option>
       </select>
     </div>
 
@@ -410,26 +410,26 @@
     terms: 'En utilisant ce site, vous acceptez la <a href="#">Politique de Confidentialité</a> et les <a href="#">Conditions</a>',
     confirmation: "Merci ! Nous vous enverrons votre devis par e-mail bientôt."
   },
-  zh: {
-    title: "比较保险报价",
-    subtitle: "选择一个类别开始获取报价",
-    home: "住房",
-    auto: "汽车",
-    life: "人寿",
-    health: "健康",
-    label_year: "建造年份",
-    placeholder_year: "1990",
-    label_zip: "邮政编码",
-    placeholder_zip: "12345",
-    label_email: "电子邮件",
-    placeholder_email: "你@example.com",
-    label_occupation: "职业",
-    placeholder_occupation: "例如：工程师",
-    submit: "获取报价并订阅",
-    language_label: "🌍 语言：",
-    terms: '使用本网站即表示您同意 <a href="#">隐私政策</a> 和 <a href="#">条款</a>',
-    confirmation: "谢谢！我们会尽快将报价发送到您的邮箱。"
-  }
+  zhpt: {
+  title: "Compare Cotações de Seguro",
+  subtitle: "Selecione uma categoria para iniciar sua cotação",
+  home: "Residência",
+  auto: "Automóvel",
+  life: "Vida",
+  health: "Saúde",
+  label_year: "Ano de Construção",
+  placeholder_year: "1990",
+  label_zip: "CEP",
+  placeholder_zip: "12345",
+  label_email: "E-mail",
+  placeholder_email: "voce@exemplo.com",
+  label_occupation: "Ocupação",
+  placeholder_occupation: "ex: Engenheiro",
+  submit: "Obter Cotação e Inscrever-se",
+  language_label: "🌍 Idioma:",
+  terms: 'Ao usar este site, você concorda com a <a href="#">Política de Privacidade</a> e os <a href="#">Termos</a>',
+  confirmation: "Obrigado! Enviaremos sua cotação por e-mail em breve."
+}
 };
     document.getElementById("lang").addEventListener("change", function () {
   const lang = this.value.toLowerCase().substring(0, 2);
